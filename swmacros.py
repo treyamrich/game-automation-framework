@@ -1,18 +1,43 @@
 import pyautogui
 import time
 import random
-
+import win32gui
+import win32con
+REPEAT_TIMES = 5
 necroTime1 = 848
 necroTime2 = 900
-repeatTimes = 5
+
 
 faimonTime1 = 300
 faimonTime2 = 310
+
+giantsTime1 = 650
+giantsTime2 = 730
+
+now1 = 1
+now2 = 3
+TIMES = {"now": (1,2), "faimon": (300,310), "giants": (650, 730), "necro": (848,900)}
+#HARD CODED VALUES, REPLACE ONCE IMAGE RECOGNITION
 REPEAT_BATTLE_DISPLAY_MON_1 = [(1415, 670), (1720, 670), (1720,795), (1415,795)]
 REPLAY_BOUNDS_DISPLAY_MON_1 = [(885, 850), (1150, 850), (1150,925), (885,925)]
 SELL_SELECTED1_BOUNDS_DISPLAY_MON_1 = [(1495, 880), (1745, 880), (1745,925), (1495,925)]
 SELL_SELECTED2_BOUNDS_DISPLAY_MON_1 = [(1305, 875), (1525, 875), (1525,945), (1305,945)]
 YES_SELL_BOUNDS_DISPLAY_MON_1 = [(695, 585), (910, 585), (910,675), (695,675)]
+
+def changeWindows(window_title):
+    # Wait for 1 second to give you time to switch to the desired window
+    time.sleep(1)
+
+    # Find the window you want to maximize by its title
+    window = win32gui.FindWindow(None, window_title)
+
+    # Switch to the window and maximize it
+    if window:
+        win32gui.ShowWindow(window, win32con.SW_MAXIMIZE)
+        win32gui.SetForegroundWindow(window)
+    else:
+        print(f"Window with title '{window_title}' not found")
+
 
 
 def randomPointWithinRect(rect):
@@ -84,13 +109,14 @@ def holdClick(position):
 clickTypes = [tap, dragClick, holdClick]
 
 
+changeWindows("Summoners War")
 time.sleep(4)
-for i in range(repeatTimes):
+for i in range(REPEAT_TIMES):
     print("iteration ", i)
     print("repeat press")
     randomClickType = random.choice(clickTypes)
     randomClickType(randomPointWithinRect(REPEAT_BATTLE_DISPLAY_MON_1))
-    time.sleep(random.uniform(faimonTime1, faimonTime2))
+    time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
     print("sell 1 press")
     randomClickType = random.choice(clickTypes)
     randomClickType(randomPointWithinRect(SELL_SELECTED1_BOUNDS_DISPLAY_MON_1))
@@ -102,11 +128,11 @@ for i in range(repeatTimes):
     print("yes press")
     randomClickType = random.choice(clickTypes)
     randomClickType(randomPointWithinRect(YES_SELL_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(3, 10))
+    time.sleep(random.uniform(5, 10))
     print("replay press")
     randomClickType = random.choice(clickTypes)
     randomClickType(randomPointWithinRect(REPLAY_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(3, 10))
+    time.sleep(random.uniform(5, 10))
 
 
 

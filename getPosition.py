@@ -2,7 +2,7 @@ import pyautogui
 import time
 time.sleep(10)
 for i in range(4):
-    # Get the current mouse position
+    # Get the current mouse position yessir
     position = pyautogui.position()
 
     # Print the x and y coordinates
