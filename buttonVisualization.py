@@ -8,14 +8,14 @@ SELL_SELECTED1_BOUNDS_DISPLAY_MON_1 = [(1495, 880), (1745, 880), (1745,925), (14
 SELL_SELECTED2_BOUNDS_DISPLAY_MON_1 = [(1305, 875), (1525, 875), (1525,945), (1305,945)]
 YES_SELL_BOUNDS_DISPLAY_MON_1 = [(695, 585), (910, 585), (910,675), (695,675)]
 time.sleep(5)
-left=1556 
-top=649 
-width=358 
-height=286
+left=695 
+top=585 
+width=910-695 
+height=675-585
 pyautogui.moveTo((left,top), duration = 0.5)
 pyautogui.moveTo((left+width,top), duration = 0.5)
 pyautogui.moveTo((left+width,top+height), duration = 0.5)
 pyautogui.moveTo((left,top+height), duration = 0.5)
 
-for position in YES_SELL_BOUNDS_DISPLAY_MON_1: 
-    pyautogui.moveTo(position, duration = 1)
+# for position in YES_SELL_BOUNDS_DISPLAY_MON_1: 
+#     pyautogui.moveTo(position, duration = 1)

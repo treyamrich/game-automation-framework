@@ -3,7 +3,8 @@ import time
 import random
 import win32gui
 import win32con
-REPEAT_TIMES = 5
+import detection
+REPEAT_TIMES = 7
 necroTime1 = 848
 necroTime2 = 900
 
@@ -23,7 +24,8 @@ REPLAY_BOUNDS_DISPLAY_MON_1 = [(885, 850), (1150, 850), (1150,925), (885,925)]
 SELL_SELECTED1_BOUNDS_DISPLAY_MON_1 = [(1495, 880), (1745, 880), (1745,925), (1495,925)]
 SELL_SELECTED2_BOUNDS_DISPLAY_MON_1 = [(1305, 875), (1525, 875), (1525,945), (1305,945)]
 YES_SELL_BOUNDS_DISPLAY_MON_1 = [(695, 585), (910, 585), (910,675), (695,675)]
-
+OK_SELL_BOUNDS_DISPLAY_MON_1 = [(845,585), (1070,585), (1070,670), (845,670)]
+CANCEL_SELL_BOUNDS_DISPLAY_MON_1 = [(1693,880), (1761,880), (1761,940), (1693,940)]
 def changeWindows(window_title):
     # Wait for 1 second to give you time to switch to the desired window
     time.sleep(1)
@@ -108,31 +110,45 @@ def holdClick(position):
 # Create a list of functions
 clickTypes = [tap, dragClick, holdClick]
 
+if __name__ == '__main__':
+    changeWindows("Summoners War")
+    time.sleep(4)
+    for i in range(REPEAT_TIMES):
+        print("iteration ", i)
+        print("repeat press")
+        randomClickType = random.choice(clickTypes)
+        randomClickType(randomPointWithinRect(REPEAT_BATTLE_DISPLAY_MON_1))
+        #time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
+        detection.splitTimesAndCheckDefeated(TIMES["giants"])
+        #error when on second display????
+        changeWindows("Summoners War")
+        time.sleep(3)
+        print("sell 1 press")
+        randomClickType = random.choice(clickTypes)
+        randomClickType(randomPointWithinRect(SELL_SELECTED1_BOUNDS_DISPLAY_MON_1))
+        time.sleep(random.uniform(2, 3))
+        print("sell 2 press")
+        randomClickType = random.choice(clickTypes)
+        randomClickType(randomPointWithinRect(SELL_SELECTED2_BOUNDS_DISPLAY_MON_1))
+        time.sleep(random.uniform(4, 9))
 
-changeWindows("Summoners War")
-time.sleep(4)
-for i in range(REPEAT_TIMES):
-    print("iteration ", i)
-    print("repeat press")
-    randomClickType = random.choice(clickTypes)
-    randomClickType(randomPointWithinRect(REPEAT_BATTLE_DISPLAY_MON_1))
-    time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
-    print("sell 1 press")
-    randomClickType = random.choice(clickTypes)
-    randomClickType(randomPointWithinRect(SELL_SELECTED1_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(5, 10))
-    print("sell 2 press")
-    randomClickType = random.choice(clickTypes)
-    randomClickType(randomPointWithinRect(SELL_SELECTED2_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(8, 10))
-    print("yes press")
-    randomClickType = random.choice(clickTypes)
-    randomClickType(randomPointWithinRect(YES_SELL_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(5, 10))
-    print("replay press")
-    randomClickType = random.choice(clickTypes)
-    randomClickType(randomPointWithinRect(REPLAY_BOUNDS_DISPLAY_MON_1))
-    time.sleep(random.uniform(5, 10))
+        if detection.noItemsToSell():
+            print("ok press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinRect(OK_SELL_BOUNDS_DISPLAY_MON_1))
+            time.sleep(random.uniform(1,2))
+            print("cancel press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinRect(CANCEL_SELL_BOUNDS_DISPLAY_MON_1))       
+        else:
+            print("yes press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinRect(YES_SELL_BOUNDS_DISPLAY_MON_1))    
+        time.sleep(random.uniform(3, 5))
+        print("replay press")
+        randomClickType = random.choice(clickTypes)
+        randomClickType(randomPointWithinRect(REPLAY_BOUNDS_DISPLAY_MON_1))
+        time.sleep(random.uniform(2, 4))
 
 
 

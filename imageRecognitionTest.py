@@ -1,3 +1,3 @@
 import pyautogui
-s = pyautogui.locateOnScreen("vscodesnippet.png", confidence=0.5)
+s = pyautogui.locateOnScreen("vscodesnippet.png", confidence=0.9)
 print(s)
