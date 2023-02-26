@@ -3,7 +3,7 @@ import time
 import random
 import win32gui
 import win32con
-import detection
+import Test_Files_and_helper_functions.detection as detection
 REPEAT_TIMES = 7
 necroTime1 = 848
 necroTime2 = 900
@@ -57,6 +57,8 @@ def randomPointWithinRect(rect):
     x = random.uniform(x_min, x_max)
     y = random.uniform(y_min, y_max)
     return (x,y)
+
+
 
 def tap(position):
     print("tap!")
@@ -149,6 +151,5 @@ if __name__ == '__main__':
         randomClickType = random.choice(clickTypes)
         randomClickType(randomPointWithinRect(REPLAY_BOUNDS_DISPLAY_MON_1))
         time.sleep(random.uniform(2, 4))
-
 
 

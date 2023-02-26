@@ -1,0 +1,67 @@
+import pyautogui
+import time
+import random
+import win32gui
+import win32con
+import Test_Files_and_helper_functions.detection as detection
+import swmacros
+import arenaImageDetection
+
+BUTTON_BATTLES = []
+MONSTER_SELECTION = []
+MONSTER_CLICK = []
+STARTBATTLE = []
+AUTOPLAY = []
+ANYWHERE = []
+def randomPointWithinBox(box):
+    # Generate random coordinates within the rectangle
+    x = random.uniform(box.left, box.left + box.width)
+    y = random.uniform(box.top + box.height, box.top)
+    return (x,y)
+def tap(position):
+    print("tap!")
+
+    # Move the mouse to the starting position of the object to be dragged
+    pyautogui.moveTo(position)
+    pyautogui.mouseDown()
+    pyautogui.mouseUp()
+    print("clickDuration: instant")
+    print("clickLocation: ", position)
+
+def holdClick(position):
+    print("holdClick!")
+    durationRandom = random.uniform(0.2,0.6)
+    pyautogui.moveTo(position)
+    pyautogui.mouseDown()
+    time.sleep(durationRandom)
+    pyautogui.mouseUp()
+    print("clickDuration: ", durationRandom)
+    print("clickLocation: ", position)
+
+# Create a list of functions
+clickTypes = [tap, holdClick]
+
+if __name__ == '__main__':
+    swmacros.changeWindows("Summoners War")
+    time.sleep(2)
+
+    BUTTON_BATTLES = arenaImageDetection.getArenaBattleLocaton()
+    print(BUTTON_BATTLES)
+    
+    for battleCoords in BUTTON_BATTLES:
+        print("battle press")
+        randomClickType = random.choice(clickTypes)
+        randomClickType(randomPointWithinBox(battleCoords))
+        print("monster selection")
+        time.sleep(2)
+        randomClickType = random.choice(clickTypes)
+        monsterSelectionLocation = arenaImageDetection.getMonsterSelectionLocation()
+        time.sleep(2)
+        print("AAAAAAAAAAAAAAAAAAAAAAA", monsterSelectionLocation)
+        randomClickType(randomPointWithinBox(monsterSelectionLocation))
+    #click rival battle
+    #click monster selection
+    #Click Monsters
+    #click start battle
+    #click autoplay bttn
+    #click anywhere on screen
