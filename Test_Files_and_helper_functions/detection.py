@@ -3,11 +3,11 @@ import time
 import random
 
 def isDefeated():
-    defeatDetect = pyautogui.locateOnScreen("10xresultpage.png", confidence=0.7)
+    defeatDetect = pyautogui.locateOnScreen("images/10xresultpage.png", confidence=0.7)
     return defeatDetect != None 
         
 def noItemsToSell():
-    itemDetect = pyautogui.locateOnScreen("sellfail.png", confidence=0.7)
+    itemDetect = pyautogui.locateOnScreen("images/sellfail.png", confidence=0.7)
     return itemDetect != None 
 
 
