@@ -14,11 +14,15 @@ def noItemsToSell():
 #pass through a tuple 
 def splitTimesAndCheckDefeated(timeRange):
     randTime = random.uniform(timeRange[0], timeRange[1])
-    for i in range(10):
+    for i in range(5):
         print("sleep iteration: ", i)
-        time.sleep(randTime/10)
+        time.sleep(randTime/5)
         if isDefeated():
             print("defeated/done")
             return
+    for i in range(5):
+        print("sleep iteration: ", i)
+        time.sleep(randTime/5)
+    return
         
         
