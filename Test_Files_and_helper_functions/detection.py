@@ -10,6 +10,11 @@ def noItemsToSell():
     itemDetect = pyautogui.locateOnScreen("images/sellfail.png", confidence=0.7)
     return itemDetect != None 
 
+#TODO get legendary confirm image path
+def legendaryFlatSellConfirm():
+    legendaryFlatSellConfirm = pyautogui.locateOnScreen("", confidence= 0.7)
+    return legendaryFlatSellConfirm != None
+
 
 #pass through a tuple 
 def splitTimesAndCheckDefeated(timeRange):

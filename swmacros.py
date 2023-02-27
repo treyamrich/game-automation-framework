@@ -159,7 +159,7 @@ if __name__ == '__main__':
         randomClickType = random.choice(clickTypes)
         randomClickType(randomPointWithinRect(REPEAT_BATTLE_DISPLAY_MON_1))
         #time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
-        detection.splitTimesAndCheckDefeated(TIMES["faimon"])
+        detection.splitTimesAndCheckDefeated(TIMES["necro"])
         #error when on second display????
         time.sleep(3)
         print("sell 1 press")
@@ -179,6 +179,9 @@ if __name__ == '__main__':
             print("cancel press")
             randomClickType = random.choice(clickTypes)
             randomClickType(randomPointWithinRect(CANCEL_SELL_BOUNDS_DISPLAY_MON_1))       
+        elif detection.legendaryFlatSellConfirm():
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinRect(CANCEL_SELL_BOUNDS_DISPLAY_MON_1))  
         else:
             print("yes press")
             randomClickType = random.choice(clickTypes)
