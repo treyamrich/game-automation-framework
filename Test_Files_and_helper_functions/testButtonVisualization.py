@@ -14,6 +14,7 @@ BOX = [(1112,665),(1112+467,665),(1112+467,665-126),(1112,665-126)]
 #Example input:
 #[(943, 446), (1146, 446), (1146, 530), (943, 530)]
 #[(1886, 992), (2293, 992), (2293, 1177), (1886, 1177)]
+#[(1693,880), (1761,880), (1761,940), (1693,940)]
 def visualizeCorners(cornerCoords):
     for coords in cornerCoords:
         pyautogui.moveTo(coords, duration = 0.5)
@@ -24,6 +25,5 @@ def visualizeBox(boxCoords):
     pyautogui.moveTo((boxCoords.left + boxCoords.width, boxCoords.top), duration = 0.5)
     pyautogui.moveTo((boxCoords.left + boxCoords.width, boxCoords.top+boxCoords.height), duration = 0.5)
     pyautogui.moveTo((boxCoords.left, boxCoords.top+boxCoords.height), duration = 0.5)
-box = picToCornerCoords.picToCornerCoords("images\9x10repeat_battle.png")
-visualizeBox(box)
+visualizeCorners([(845,585), (1070,585), (1070,670), (845,670)])
     
