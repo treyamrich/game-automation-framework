@@ -10,15 +10,22 @@ YES_SELL_BOUNDS_DISPLAY_MON_1 = [(695, 585), (910, 585), (910,675), (695,675)]
 BOX = [(1112,665),(1112+467,665),(1112+467,665-126),(1112,665-126)]
 #Box(left=1112, top=665, width=467, height=126)
 #Box(left=1112, top=379, width=467, height=126)
-time.sleep(5)
+time.sleep(3)
 left=1112 
 top=379 
 width=467
 height=126
-pyautogui.moveTo((left,top), duration = 0.5)
-pyautogui.moveTo((left+width,top), duration = 0.5)
-pyautogui.moveTo((left+width,top+height), duration = 0.5)
-pyautogui.moveTo((left,top+height), duration = 0.5)
+
+#[(1886, 992), (2293, 992), (2293, 1177), (1886, 1177)]
+def visualizeCorners(cornerCoords):
+    for coords in cornerCoords:
+        pyautogui.moveTo(coords, duration = 0.5)
+
+visualizeCorners(SELL_SELECTED1_BOUNDS_DISPLAY_MON_1)
+# pyautogui.moveTo((left,top), duration = 0.5)
+# pyautogui.moveTo((left+width,top), duration = 0.5)
+# pyautogui.moveTo((left+width,top+height), duration = 0.5)
+# pyautogui.moveTo((left,top+height), duration = 0.5)
 
 # for position in YES_SELL_BOUNDS_DISPLAY_MON_1: 
 #     pyautogui.moveTo(position, duration = 1)

@@ -4,7 +4,11 @@ import random
 import win32gui
 import win32con
 import Test_Files_and_helper_functions.detection as detection
-REPEAT_TIMES = 7
+import os
+
+
+SHUTDOWN = False
+REPEAT_TIMES =7
 necroTime1 = 848
 necroTime2 = 900
 
@@ -18,6 +22,8 @@ giantsTime2 = 730
 now1 = 1
 now2 = 3
 TIMES = {"now": (1,2), "faimon": (300,310), "giants": (650, 730), "necro": (848,900)}
+
+
 #HARD CODED VALUES, REPLACE ONCE IMAGE RECOGNITION
 REPEAT_BATTLE_DISPLAY_MON_1 = [(1415, 670), (1720, 670), (1720,795), (1415,795)]
 REPLAY_BOUNDS_DISPLAY_MON_1 = [(885, 850), (1150, 850), (1150,925), (885,925)]
@@ -26,6 +32,22 @@ SELL_SELECTED2_BOUNDS_DISPLAY_MON_1 = [(1305, 875), (1525, 875), (1525,945), (13
 YES_SELL_BOUNDS_DISPLAY_MON_1 = [(695, 585), (910, 585), (910,675), (695,675)]
 OK_SELL_BOUNDS_DISPLAY_MON_1 = [(845,585), (1070,585), (1070,670), (845,670)]
 CANCEL_SELL_BOUNDS_DISPLAY_MON_1 = [(1693,880), (1761,880), (1761,940), (1693,940)]
+
+#TODO get screen offset!!!
+
+def convScreen(cornerCoords, monOriginal, monNew):
+    #my screeens:
+    #mon 1 is 1920 x 1080
+    #mon 2 is 2560 x 1600
+    newCornerCoords = []
+    for i in cornerCoords:
+        x, y= i[0], i[1]
+        xNew = i[0] * monNew[0] / monOriginal[0]
+        yNew = i[1] * monNew[1] / monOriginal[1]
+        newCornerCoords.append((int(xNew),int(yNew)))
+    return newCornerCoords
+
+
 def changeWindows(window_title):
     # Wait for 1 second to give you time to switch to the desired window
     time.sleep(1)
@@ -113,6 +135,8 @@ def holdClick(position):
 clickTypes = [tap, dragClick, holdClick]
 
 if __name__ == '__main__':
+
+    
     changeWindows("Summoners War")
     time.sleep(4)
     for i in range(REPEAT_TIMES):
@@ -123,7 +147,6 @@ if __name__ == '__main__':
         #time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
         detection.splitTimesAndCheckDefeated(TIMES["giants"])
         #error when on second display????
-        changeWindows("Summoners War")
         time.sleep(3)
         print("sell 1 press")
         randomClickType = random.choice(clickTypes)
@@ -151,5 +174,11 @@ if __name__ == '__main__':
         randomClickType = random.choice(clickTypes)
         randomClickType(randomPointWithinRect(REPLAY_BOUNDS_DISPLAY_MON_1))
         time.sleep(random.uniform(2, 4))
+    
+
+    if SHUTDOWN:
+        os.system("shutdown /s /t 1")
+
+    
 
 

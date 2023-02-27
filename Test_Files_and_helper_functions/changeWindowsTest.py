@@ -26,7 +26,7 @@ import win32con
 
 
 # Wait for 5 seconds to give you time to switch to the desired window
-time.sleep(5)
+time.sleep(1)
 
 # Find the window you want to maximize by its title
 window_title = "Summoners War"

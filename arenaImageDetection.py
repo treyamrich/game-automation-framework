@@ -35,5 +35,6 @@ def getArenaBattleLocaton():
 
 def getMonsterSelectionLocation():
     box = pyautogui.locateAllOnScreen('images/monster_selection.png', confidence=0.9, grayscale=True)
+    print("monster selection location = ", box)
     return box
 
