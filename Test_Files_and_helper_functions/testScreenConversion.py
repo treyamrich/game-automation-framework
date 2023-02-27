@@ -3,7 +3,6 @@ import time
 import random
 import win32gui
 import win32con
-import Test_Files_and_helper_functions.detection as detection
 import os
 
 
@@ -45,4 +44,6 @@ def convScreen(cornerCoords, monOriginal, monNew):
         newCornerCoords.append((int(xNew),int(yNew)))
     return newCornerCoords
 
-print(convScreen((REPEAT_BATTLE_DISPLAY_MON_1), (1920,1080), (2560,1600)))
+
+
+print(convScreen((REPEAT_BATTLE_DISPLAY_MON_1), (1920,1080), (1280,720)))
