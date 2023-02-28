@@ -1,7 +1,7 @@
 import pyautogui
 import time
 import random
-import picToCornerCoords  
+import picToCornerCoords as picToCornerCoords  
 #Reference Monitor Values:
 '''
 REPEAT_BATTLE_DISPLAY_MON_1 = [(1415, 670), (1720, 670), (1720,795), (1415,795)]
@@ -25,5 +25,5 @@ def visualizeBox(boxCoords):
     pyautogui.moveTo((boxCoords.left + boxCoords.width, boxCoords.top), duration = 0.5)
     pyautogui.moveTo((boxCoords.left + boxCoords.width, boxCoords.top+boxCoords.height), duration = 0.5)
     pyautogui.moveTo((boxCoords.left, boxCoords.top+boxCoords.height), duration = 0.5)
-visualizeCorners([(845,585), (1070,585), (1070,670), (845,670)])
+visualizeCorners([(685, 576), (924, 576), (924, 682), (685, 682)])
     

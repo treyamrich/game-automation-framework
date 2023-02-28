@@ -5,6 +5,18 @@ import win32gui
 import win32con
 import os
 
-def picToCornerCoords(imgPath):
+def picToBoxCoords(imgPath):
     imgDetect = pyautogui.locateOnScreen(imgPath, confidence=0.7)
     return imgDetect
+
+def picToCornerCoords(imgPath):
+    imgDetect = pyautogui.locateOnScreen(imgPath, confidence=0.7)
+    cornerCoordReturn = []
+    if(imgDetect != None):
+        cornerCoordReturn.append((imgDetect.left,imgDetect.top))
+        cornerCoordReturn.append((imgDetect.left + imgDetect.width, imgDetect.top))
+        cornerCoordReturn.append((imgDetect.left + imgDetect.width, imgDetect.top+imgDetect.height))
+        cornerCoordReturn.append((imgDetect.left, imgDetect.top+imgDetect.height))
+    return cornerCoordReturn
+
+print(picToCornerCoords("images/legend_rune_yes.png"))

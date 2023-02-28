@@ -3,16 +3,16 @@ import time
 import random
 
 def isDefeated():
-    defeatDetect = pyautogui.locateOnScreen("images/10xresultpage.png", confidence=0.7)
+    defeatDetect = pyautogui.locateOnScreen("images\\10xresultpage.png", confidence=0.7)
     return defeatDetect != None 
         
 def noItemsToSell():
-    itemDetect = pyautogui.locateOnScreen("images/sellfail.png", confidence=0.7)
+    itemDetect = pyautogui.locateOnScreen("images\sellfail.png", confidence=0.7)
     return itemDetect != None 
 
 #TODO get legendary confirm image path
 def legendaryFlatSellConfirm():
-    legendaryFlatSellConfirm = pyautogui.locateOnScreen("", confidence= 0.7)
+    legendaryFlatSellConfirm = pyautogui.locateOnScreen("images\legend_rune_sell.png", confidence= 0.7)
     return legendaryFlatSellConfirm != None
 
 
