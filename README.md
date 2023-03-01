@@ -2,7 +2,7 @@
 # Summoners War Auto-farmer
 *Author: Kevin Khong*
 
-This Python script is designed to automate repetitive tasks in the mobile game Summoners War. The script can be used to automatically farm the Giants dungeon, sell unwanted items, and replay battles.
+This Python script is designed to automate repetitive tasks in the mobile game Summoners War. The script can be used to automatically farm the Giants dungeon, sell unwanted items, and replay battles. Strengths: Chooses paths using simple algorithms to cut down on time.
 
 ## Requirements
 The following Python packages are required to run this script:
@@ -41,3 +41,14 @@ The script can be easily customized to perform different actions or to farm diff
 **CANCEL_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "cancel" button when no items are available to sell
 ## Disclaimer
 This script is intended for educational and research purposes only. Using this script to cheat or violate the terms of service of Summoners War is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
+
+## Arena Script
+The Python script swarenamacros.py is designed to automate the arena rivals process
+
+**DEPENDENCIES:**
+Searches for buttons via pyautogui's image detection and is subject to change given art and model changes via COM2US updates.
+Automates scrolling, and needs a functioning tricaru team in the first arena monster team in order to function.
+You can use this script as a starting point to automate other tasks in the game or modify it to suit your specific needs. However, keep in mind that automating games is against the terms of service of most games and could lead to your account being banned. So, use this script at your own risk.
+
+TODO: for the current arena script, changes needed to be made in order to add an if else detection for the tricaru team in orer to save time.
+
