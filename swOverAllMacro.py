@@ -11,6 +11,19 @@ import win32con
 
 ENERGY_REFILL = False
 
+
+def waitForImg(imgPath):
+    while True:
+        if(pic.picToCornerCoords(imgPath) != []):
+            coords = pic.picToCornerCoords(imgPath)
+            time.sleep(1)
+            randomClickType = random.choice(swmacros.clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(coords))   
+            break
+        else:
+            time.sleep(1)
+    return
+
 def check_if_app_running(app_name):
     for p in psutil.process_iter():
         try:
@@ -40,20 +53,18 @@ def openSW():
     else:
         print("close the gaddamn program")
         
-    # Wait for 1 second to give you time to switch to the desired window
-    time.sleep(1)
-
-    time.sleep(3)
-    swcoord = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\swIcon.png"))
-    pyautogui.moveTo(swcoord)
-    time.sleep(.3)
-    pyautogui.mouseDown()
-    pyautogui.mouseUp()
+    while True:
+        if(pic.picToCornerCoords("images\\navigateToCaiross\swIcon.png") != []):
+            swIconCoords = pic.picToCornerCoords("images\\navigateToCaiross\swIcon.png")
+            print(swIconCoords)
+            time.sleep(1)
+            randomClickType = random.choice(swmacros.clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(swIconCoords))   
+            break
+        else:
+            time.sleep(1)
     time.sleep(5)
-    swPlayCoord = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\swPlay.png"))
-    pyautogui.moveTo(swPlayCoord)
-    pyautogui.mouseDown()
-    pyautogui.mouseUp()
+    waitForImg("images\\navigateToCaiross\swPlay.png")
     time.sleep(10)
 
     window = win32gui.FindWindow(None, "Summoners War")
@@ -63,14 +74,7 @@ def openSW():
         win32gui.ShowWindow(window, win32con.SW_MAXIMIZE)
         win32gui.SetForegroundWindow(window)
     time.sleep(30)
-    while(True):
-        if(pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png") != []):
-            noticeCoords = pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png")
-            time.sleep(1)
-            randomClickType = random.choice(swmacros.clickTypes)
-            randomClickType(swmacros.randomPointWithinRect(noticeCoords))   
-        else:
-            break
+    waitForImg("images\\navigateToCaiross\\notice_dont_show_again.png")
     time.sleep(random.uniform(1,3))
     touchToPlay = pic.picToCornerCoords("images\\navigateToCaiross\\touch_to_start.png")
     randomClickType = random.choice(swmacros.clickTypes)

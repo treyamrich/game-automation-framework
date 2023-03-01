@@ -73,6 +73,9 @@ def changeWindows(window_title):
 
 
 def randomPointWithinRect(rect):
+    if rect == []:
+        return False
+
     # Define the corners of the rectangle
     top_left = rect[0]
     top_right = rect[1]
@@ -151,7 +154,7 @@ if __name__ == '__main__':
         print("iteration ", i)
         print("repeat press")
         REPEAT_BATTLE = picToCornerCoords.picToCornerCoords("images\9x10repeat_battle.png") 
-        time.sleep(random.randomInt(2,3))
+        time.sleep(random.randint(2,3))
         randomClickType = random.choice(clickTypes)
         randomClickType(randomPointWithinRect(REPEAT_BATTLE))
         #time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
