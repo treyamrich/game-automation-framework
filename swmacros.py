@@ -92,9 +92,9 @@ def randomPointWithinRect(rect):
 
 def tap(position):
     print("tap!")
-
+    durationRandom = random.uniform(0.2,0.6)
     # Move the mouse to the starting position of the object to be dragged
-    pyautogui.moveTo(position)
+    pyautogui.moveTo(position, duration = durationRandom)
     pyautogui.mouseDown()
     pyautogui.mouseUp()
     print("clickDuration: instant")
@@ -151,6 +151,7 @@ if __name__ == '__main__':
         print("iteration ", i)
         print("repeat press")
         REPEAT_BATTLE = picToCornerCoords.picToCornerCoords("images\9x10repeat_battle.png") 
+        time.sleep(random.randomInt(2,3))
         randomClickType = random.choice(clickTypes)
         randomClickType(randomPointWithinRect(REPEAT_BATTLE))
         #time.sleep(random.uniform(TIMES["giants"][0], TIMES["giants"][1]))
