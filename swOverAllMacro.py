@@ -9,6 +9,8 @@ import os
 import win32gui
 import win32con
 
+ENERGY_REFILL = False
+
 def check_if_app_running(app_name):
     for p in psutil.process_iter():
         try:
@@ -63,12 +65,49 @@ def openSW():
     time.sleep(30)
     while(True):
         if(pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png") != []):
-            noticeCoords = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png"))
+            noticeCoords = pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png")
             time.sleep(1)
             randomClickType = random.choice(swmacros.clickTypes)
             randomClickType(swmacros.randomPointWithinRect(noticeCoords))   
         else:
             break
+    time.sleep(random.uniform(1,3))
+    touchToPlay = pic.picToCornerCoords("images\\navigateToCaiross\\touch_to_start.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(touchToPlay)) 
+    time.sleep(random.uniform(1,3))
+    monthlyX = pic.picToCornerCoords("images\\navigateToCaiross\monthly_event_X.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(monthlyX)) 
+    time.sleep(random.uniform(1,3))
+    giftX = pic.picToCornerCoords("images\\navigateToCaiross\giftboxX.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(giftX)) 
+    
+    #if there are events keep pressing x
+    while(True):
+        if(pic.picToCornerCoords("images\\navigateToCaiross\giftboxX.png") != []):
+            otherX = pic.picToCornerCoords("images\\navigateToCaiross\giftboxX.png")
+            time.sleep(random.uniform(1,3))
+            randomClickType = random.choice(swmacros.clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(otherX))   
+        else:
+            break
+
+
+    time.sleep(random.uniform(1,3))
+    navigationBattle = pic.picToCornerCoords("images\\navigateToCaiross\\navigaton_battle.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(navigationBattle)) 
+    time.sleep(random.uniform(1,3))
+    caiross = pic.picToCornerCoords("images\\navigateToCaiross\caiross.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(caiross)) 
+    time.sleep(random.uniform(1,3))
+    caiross = pic.picToCornerCoords("images\\navigateToCaiross\giants12battle.png")
+    randomClickType = random.choice(swmacros.clickTypes)
+    randomClickType(swmacros.randomPointWithinRect(caiross)) 
+
 
 def runScript(scriptPath):
     # Use the Popen function to run the Python file
@@ -76,4 +115,9 @@ def runScript(scriptPath):
 
 
 if __name__ == '__main__':
-    openSW()
+    if(ENERGY_REFILL == False):
+        openSW()
+        runScript(cairossScript)
+    else:
+        #TODO implement energy stoppage after repetitive X's on island
+        print("TODO")

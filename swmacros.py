@@ -131,7 +131,7 @@ def dragClick2(position):
 def holdClick(position):
     print("holdClick!")
     durationRandom = random.uniform(0.2,0.6)
-    pyautogui.moveTo(position)
+    pyautogui.moveTo(position, duration= durationRandom)
     pyautogui.mouseDown()
     time.sleep(durationRandom)
     pyautogui.mouseUp()
