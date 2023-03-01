@@ -41,16 +41,15 @@ def openSW():
     # Wait for 1 second to give you time to switch to the desired window
     time.sleep(1)
 
-    time.sleep(.3)
+    time.sleep(3)
     swcoord = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\swIcon.png"))
     pyautogui.moveTo(swcoord)
     time.sleep(.3)
     pyautogui.mouseDown()
     pyautogui.mouseUp()
-    time.sleep(.9)
+    time.sleep(3)
     swPlayCoord = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\swPlay.png"))
     pyautogui.moveTo(swPlayCoord)
-    time.sleep(.3)
     pyautogui.mouseDown()
     pyautogui.mouseUp()
     time.sleep(10)
@@ -61,7 +60,7 @@ def openSW():
     if window:
         win32gui.ShowWindow(window, win32con.SW_MAXIMIZE)
         win32gui.SetForegroundWindow(window)
-    time.sleep(20)
+    time.sleep(30)
     while(True):
         if(pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png") != []):
             noticeCoords = swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\navigateToCaiross\\notice_dont_show_again.png"))
