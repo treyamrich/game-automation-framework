@@ -6,6 +6,7 @@ import win32con
 import Test_Files_and_helper_functions.detection as detection
 import swmacros
 import arenaImageDetection
+import Test_Files_and_helper_functions.picToCornerCoords as pic
 
 BUTTON_BATTLES = []
 MONSTER_SELECTION = []
@@ -20,9 +21,9 @@ def randomPointWithinBox(box):
     return (x,y)
 def tap(position):
     print("tap!")
-
+    durationRandom = random.uniform(0.2,0.6)
     # Move the mouse to the starting position of the object to be dragged
-    pyautogui.moveTo(position)
+    pyautogui.moveTo(position,duration = durationRandom)
     pyautogui.mouseDown()
     pyautogui.mouseUp()
     print("clickDuration: instant")
@@ -31,34 +32,142 @@ def tap(position):
 def holdClick(position):
     print("holdClick!")
     durationRandom = random.uniform(0.2,0.6)
-    pyautogui.moveTo(position)
+    pyautogui.moveTo(position,duration = durationRandom)
     pyautogui.mouseDown()
     time.sleep(durationRandom)
     pyautogui.mouseUp()
     print("clickDuration: ", durationRandom)
     print("clickLocation: ", position)
 
+    
 # Create a list of functions
 clickTypes = [tap, holdClick]
+
+
+#arena scroll x bounds:
+# Current mouse position: x=596, y=250
+# Current mouse position: x=1357, y=256
+#Current mouse position: x=1209, y=880
+# Current mouse position: x=1204, y=783
+# Current mouse position: x=1196, y=378
+def arenaScroll():
+    xInitial = random.randint(596,1357)
+    xFinal = random.randint(596,1357)
+    yInitial = random.randint(783, 880)
+    yFinal = random.randint(375,378)
+    durationRandom1 = random.uniform(0.2,0.6)
+    durationRandom2 = random.uniform(0.2,0.6)
+    pyautogui.moveTo(xInitial,yInitial, duration = durationRandom1)
+    pyautogui.mouseDown()
+    pyautogui.moveTo(xFinal,yFinal, duration= durationRandom2)
+    pyautogui.mouseUp()
+    
+
 
 if __name__ == '__main__':
     swmacros.changeWindows("Summoners War")
     time.sleep(2)
-
     BUTTON_BATTLES = arenaImageDetection.getArenaBattleLocaton()
     print(BUTTON_BATTLES)
+    if BUTTON_BATTLES:
+        for battleCoords in BUTTON_BATTLES:
+            print("battle press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinBox(battleCoords))
+            print("monster selection")
+            time.sleep(random.uniform(1, 3))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\monster_selection.png")))
+            print("monster selection click")
+            time.sleep(random.uniform(1, 5))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\tricaru_arena_team.png")))
+            print("arena start battle")
+            time.sleep(random.uniform(1, 2))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\arena_start_battle.png")))
+            print("autoplay")
+            time.sleep(random.uniform(4, 6))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\autoplay_arena_button.png")))
+            print("anywhere click")
+            time.sleep(random.uniform(15, 20))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\victory_arena2.png")))
+            time.sleep(15)
+    else:
+        print("arena battle button not found")
     
-    for battleCoords in BUTTON_BATTLES:
-        print("battle press")
-        randomClickType = random.choice(clickTypes)
-        randomClickType(randomPointWithinBox(battleCoords))
-        print("monster selection")
-        time.sleep(2)
-        randomClickType = random.choice(clickTypes)
-        monsterSelectionLocation = arenaImageDetection.getMonsterSelectionLocation()
-        time.sleep(2)
-        print("AAAAAAAAAAAAAAAAAAAAAAA", monsterSelectionLocation)
-        randomClickType(randomPointWithinBox(monsterSelectionLocation))
+    time.sleep(random.uniform(1,2))
+    arenaScroll()
+    time.sleep(random.uniform(1,2))
+    BUTTON_BATTLES = arenaImageDetection.getArenaBattleLocaton()
+    print(BUTTON_BATTLES)
+
+    if BUTTON_BATTLES:
+        for battleCoords in BUTTON_BATTLES:
+            print("battle press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinBox(battleCoords))
+            print("monster selection")
+            time.sleep(random.uniform(1, 3))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\monster_selection.png")))
+            print("monster selection click")
+            time.sleep(random.uniform(1, 5))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\tricaru_arena_team.png")))
+            print("arena start battle")
+            time.sleep(random.uniform(1, 2))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\arena_start_battle.png")))
+            print("autoplay")
+            time.sleep(random.uniform(4, 6))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\autoplay_arena_button.png")))
+            print("anywhere click")
+            time.sleep(random.uniform(15, 20))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\victory_arena2.png")))
+            time.sleep(15)
+    else:
+        print("arena battle button not found")
+
+    time.sleep(random.uniform(1,2))
+    arenaScroll()
+    time.sleep(random.uniform(1,2))
+    BUTTON_BATTLES = arenaImageDetection.getArenaBattleLocaton()
+    print(BUTTON_BATTLES)
+
+    if BUTTON_BATTLES:
+        for battleCoords in BUTTON_BATTLES:
+            print("battle press")
+            randomClickType = random.choice(clickTypes)
+            randomClickType(randomPointWithinBox(battleCoords))
+            print("monster selection")
+            time.sleep(random.uniform(1, 3))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\monster_selection.png")))
+            print("monster selection click")
+            time.sleep(random.uniform(1, 5))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\tricaru_arena_team.png")))
+            print("arena start battle")
+            time.sleep(random.uniform(1, 2))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\arena_start_battle.png")))
+            print("autoplay")
+            time.sleep(random.uniform(4, 6))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\autoplay_arena_button.png")))
+            print("anywhere click")
+            time.sleep(random.uniform(15, 20))
+            randomClickType = random.choice(clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(pic.picToCornerCoords("images\\arena_images\\victory_arena2.png")))
+            time.sleep(15)
+    else:
+        print("arena battle button not found")
+
     #click rival battle
     #click monster selection
     #Click Monsters

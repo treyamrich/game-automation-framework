@@ -18,5 +18,3 @@ def picToCornerCoords(imgPath):
         cornerCoordReturn.append((imgDetect.left + imgDetect.width, imgDetect.top+imgDetect.height))
         cornerCoordReturn.append((imgDetect.left, imgDetect.top+imgDetect.height))
     return cornerCoordReturn
-
-print(picToCornerCoords("images/legend_rune_yes.png"))

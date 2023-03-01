@@ -10,7 +10,7 @@ time.sleep(2)
 # locate all instances of the image
 
 def getArenaBattleLocaton():
-    matches = pyautogui.locateAllOnScreen('images/arena_rivals_img.png', confidence=0.9, grayscale=True)
+    matches = pyautogui.locateAllOnScreen('images\\arena_images\\arena_rivals_img.png', confidence=0.9, grayscale=True)
 
     unique_matches = set()
 
