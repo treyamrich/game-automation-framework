@@ -52,3 +52,18 @@ You can use this script as a starting point to automate other tasks in the game 
 
 TODO: for the current arena script, changes needed to be made in order to add an if else detection for the tricaru team in orer to save time.
 
+# Overall Navigation Script
+Located in swOverAllMacro.py
+
+This is a Python script that automates the process of opening and navigating to a specific area in the mobile game "Summoners War". The script is designed to be an overall navigation script that encompasses other script uses.
+
+## Features
+The script uses several libraries, including PyAutoGUI, psutil, and win32gui, to automate the process of opening the game, navigating to the Caiross dungeon area, and clicking through pop-up notifications and other events that may be present on the screen. The script can also navigate to specific areas within the Caiross dungeon, such as the Giants 12 battle area.
+In addition to its main navigation features, the script also includes a number of helper functions for image recognition and random clicking, as well as an optional feature for implementing energy stoppage after repetitive X's on the island.
+
+## Usage
+To use the script, simply run it using the following command:
+python swOverAllMacro.py
+
+## TODO: 
+Future changes will include the addition of a graphical user interface for ease of use, and abstraction for those unfamiliar with code.
