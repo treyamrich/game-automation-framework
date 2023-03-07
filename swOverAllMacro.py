@@ -14,8 +14,20 @@ ENERGY_REFILL = False
 
 def waitForImg(imgPath):
     while True:
-        if(pic.picToCornerCoords(imgPath) != []):
-            coords = pic.picToCornerCoords(imgPath)
+        if(pic.picToCornerCoordsMediumRes(imgPath) != []):
+            coords = pic.picToCornerCoordsMediumRes(imgPath)
+            time.sleep(1)
+            randomClickType = random.choice(swmacros.clickTypes)
+            randomClickType(swmacros.randomPointWithinRect(coords))   
+            break
+        else:
+            time.sleep(1)
+    return
+
+def waitForImgLowRes(imgPath):
+    while True:
+        if(pic.picToCornerCoordsLowRes(imgPath) != []):
+            coords = pic.picToCornerCoordsLowRes(imgPath)
             time.sleep(1)
             randomClickType = random.choice(swmacros.clickTypes)
             randomClickType(swmacros.randomPointWithinRect(coords))   
@@ -64,7 +76,7 @@ def openSW():
         else:
             time.sleep(1)
     time.sleep(5)
-    waitForImg("images\\navigateToCaiross\swPlay.png")
+    waitForImgLowRes("images\\navigateToCaiross\swPlay.png")
     time.sleep(10)
 
     window = win32gui.FindWindow(None, "Summoners War")

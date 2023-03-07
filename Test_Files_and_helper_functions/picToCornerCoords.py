@@ -10,7 +10,7 @@ def picToBoxCoords(imgPath):
     return imgDetect
 
 def picToCornerCoords(imgPath):
-    imgDetect = pyautogui.locateOnScreen(imgPath, confidence=0.55)
+    imgDetect = pyautogui.locateOnScreen(imgPath, confidence=0.7)
     cornerCoordReturn = []
     if(imgDetect != None):
         cornerCoordReturn.append((imgDetect.left,imgDetect.top))

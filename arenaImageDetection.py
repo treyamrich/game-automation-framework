@@ -9,9 +9,8 @@ UNIQUE_THRESHOLD = 10
 time.sleep(2)
 # locate all instances of the image
 
-def getArenaBattleLocaton():
-    matches = pyautogui.locateAllOnScreen('images\\arena_images\\arena_rivals_img.png', confidence=0.9, grayscale=True)
-
+def getArenaRivalBattleLocaton():
+    matches = pyautogui.locateAllOnScreen('images\\arena_images\\arena_rivals_img.png', confidence=0.9, grayscale=False)
     unique_matches = set()
 
     # add each unique coordinate to the set
