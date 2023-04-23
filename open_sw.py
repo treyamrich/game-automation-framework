@@ -9,7 +9,7 @@ SCRIPT_NAME = 'open_sw'
 APP_PATH = "C:\Program Files\Google\Play Games\Bootstrapper.exe"
 APP_NAME = "Google Play Games beta.exe"
 
-bot = VirtualInputHandler(SCRIPT_NAME, log_level='debug')
+bot = VirtualInputHandler(SCRIPT_NAME, log_level='warning')
 brief_random_sleep = lambda : time.sleep(random.uniform(1, 3))
 
 def is_app_running(app_name: str):
