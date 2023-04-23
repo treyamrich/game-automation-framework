@@ -1,32 +1,39 @@
 
-# Summoners War Auto-farmer
+# Summoners War Automation
 *Author: Kevin Khong*
+*Co-author: Trey Amrich*
 
-This Python script is designed to automate repetitive tasks in the mobile game Summoners War. The script can be used to automatically farm the Giants dungeon, sell unwanted items, and replay battles. Strengths: Chooses paths using simple algorithms to cut down on time.
+This repository is a simple framework that will let you create bots for automating any task. The focus was for automation is the game Summoners War,
+however, this framework can be used for other games / tasks that require sending clicks / keyboard presses. 
 
 ## Requirements
 The following Python packages are required to run this script:
 
-pyautogui
-time
-random
-win32gui
-win32con
-Usage
-To use the script, simply run the following command:
+- pyautogui
+- time
+- random
+- win32gui
+- win32con
 
-Copy code
-python SummonersWarAutoFarmer.py
+## Disclaimer
+This repo is intended for educational and research purposes only. Using this script to cheat is a violation of the terms of service of Summoners War. It is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
 
-The script will automatically launch Summoners War and perform the specified actions. The default settings are set to farm the Giants dungeon 7 times, sell unwanted items, and replay battles.
+## Quick Start
+The script `run_my_scripts.py` is the main script you will want to run each time. This file will use a `ScriptQueue` that runs all your scripts in series.
+To create a script, make sure to import the `VirtualInputHandler` from the `util` directory. This class abstracts clicking and image detection to make
+your script code more simple.
+
+*If you are using this repo for Summoners War, leave the `open_sw` script inside the `run_my_scripts.py` file. That script will automatically open the game
+and click through popups for you.*
 
 ## Features
-The script includes the following features:
+The framework includes the following features with Summoners War as the main focus:
 
-Randomized clicking and dragging to avoid detection
-Image recognition and detection to check for defeated monsters
-Automatic selling of unwanted items
-Automatic replaying of battles
+- Randomized clicking and dragging to avoid detection
+- Image recognition and detection to check for defeated monsters
+- Automatic selling of unwanted items
+- Automatic replaying of battles
+
 ## Customization
 The script can be easily customized to perform different actions or to farm different dungeons. Simply edit the values in the following variables to adjust the script's behavior:
 
@@ -39,8 +46,6 @@ The script can be easily customized to perform different actions or to farm diff
 **YES_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "yes" button when selling items
 **OK_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "ok" button when no items are available to sell
 **CANCEL_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "cancel" button when no items are available to sell
-## Disclaimer
-This script is intended for educational and research purposes only. Using this script to cheat or violate the terms of service of Summoners War is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
 
 ## Arena Script
 The Python script swarenamacros.py is designed to automate the arena rivals process
