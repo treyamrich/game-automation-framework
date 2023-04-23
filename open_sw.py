@@ -5,11 +5,11 @@ import time
 import random
 from util.input_handler import VirtualInputHandler
 
-SCRIPT_DIR = 'open_sw'
+SCRIPT_NAME = 'open_sw'
 APP_PATH = "C:\Program Files\Google\Play Games\Bootstrapper.exe"
 APP_NAME = "Google Play Games beta.exe"
 
-bot = VirtualInputHandler(SCRIPT_DIR, log_level='debug')
+bot = VirtualInputHandler(SCRIPT_NAME, log_level='debug')
 brief_random_sleep = lambda : time.sleep(random.uniform(1, 3))
 
 def is_app_running(app_name: str):

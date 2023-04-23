@@ -10,13 +10,13 @@ class VirtualInputHandler:
     Class encapsulates the logic for virtual clicking and keyboard inputs
     """
 
-    def __init__(self, script_name: str, log_level: str = 'warning'):
+    def __init__(self, script_name: str, log_serverity_level: str = 'warning'):
         """
         script_name: the name of the script folder under /scripts
-        level: str specifies the logging level. All log msgs of the level and above will be logged.
+        log_serverity_level: str specifies the logging level. All log msgs of the level and above will be logged.
         """
         self.image_dir = f'images\\{script_name}\\'
-        self.logger = Logger(script_name, log_level)
+        self.logger = Logger(script_name, log_serverity_level)
         self.mouse = MouseController(self.logger)
         self.keyboard = KeyboardController(self.logger)
     
