@@ -4,6 +4,7 @@ from util.input_handling.logger import Logger
 import win32gui
 import win32con
 import time
+import pyautogui
 
 class VirtualInputHandler:
     """
@@ -20,11 +21,12 @@ class VirtualInputHandler:
         self.mouse = MouseController(self.logger)
         self.keyboard = KeyboardController(self.logger)
     
-    def change_window(self, window_title: str):
+    def change_window(self, window_title: str, expand: bool = False):
         """
         Waits 1 second to change to the window.
 
         window_title: the name of the window to switch to
+        expand: predicate if the window should be fullscreen after switching
         """
         time.sleep(1)
         window = win32gui.FindWindow(None, window_title)
@@ -33,8 +35,10 @@ class VirtualInputHandler:
             self.logger.critical(f"Window not found {window_title}")
             exit(1)
 
-        win32gui.ShowWindow(window, win32con.SW_MAXIMIZE)
         win32gui.SetForegroundWindow(window)
+        if expand:
+            pyautogui.press('f11')
+            #win32gui.ShowWindow(window, win32con.SW_MAXIMIZE)
 
     def random_click_position(self, position: tuple):
         """

@@ -12,9 +12,8 @@ class ScriptQueue:
             script += '.py'
             self.logger.info(f'Starting script {script}')
             p = subprocess.Popen(["python", script], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-
-            exit_code = p.wait()
-            if exit_code != 0:
+            output, error = p.communicate()
+            if error:
                 p.terminate()
-                self.logger.critical(f'Process terminated with errors: {script}')
+                self.logger.critical(f'Process terminated with errors: {script}\n{error.decode("utf-8")}')
                 exit(1)
