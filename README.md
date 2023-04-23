@@ -15,6 +15,9 @@ The following Python packages are required to run this script:
 - win32gui
 - win32con
 
+## Disclaimer
+This script is intended for educational and research purposes only. Using this script to cheat or violate the terms of service of Summoners War is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
+
 ## Quick Start
 The script `run_my_scripts.py` is the main script you will want to run each time. This file will use a `ScriptQueue` that runs all your scripts in series.
 To create a script, make sure to import the `VirtualInputHandler` from the `util` directory. This class abstracts clicking and image detection to make
@@ -43,8 +46,6 @@ The script can be easily customized to perform different actions or to farm diff
 **YES_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "yes" button when selling items
 **OK_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "ok" button when no items are available to sell
 **CANCEL_SELL_BOUNDS_DISPLAY_MON_1**: The coordinates of the "cancel" button when no items are available to sell
-## Disclaimer
-This script is intended for educational and research purposes only. Using this script to cheat or violate the terms of service of Summoners War is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
 
 ## Arena Script
 The Python script swarenamacros.py is designed to automate the arena rivals process
