@@ -26,10 +26,10 @@ and click through popups for you.*
 ## Features
 The framework includes the following features with Summoners War as the main focus:
 
-Randomized clicking and dragging to avoid detection
-Image recognition and detection to check for defeated monsters
-Automatic selling of unwanted items
-Automatic replaying of battles
+-Randomized clicking and dragging to avoid detection
+-Image recognition and detection to check for defeated monsters
+-Automatic selling of unwanted items
+-Automatic replaying of battles
 
 ## Customization
 The script can be easily customized to perform different actions or to farm different dungeons. Simply edit the values in the following variables to adjust the script's behavior:
