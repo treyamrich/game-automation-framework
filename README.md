@@ -16,7 +16,7 @@ The following Python packages are required to run this script:
 - win32con
 
 ## Disclaimer
-This script is intended for educational and research purposes only. Using this script to cheat or violate the terms of service of Summoners War is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
+This repo is intended for educational and research purposes only. Using this script to cheat is a violation of the terms of service of Summoners War. It is strictly prohibited and can result in the suspension or termination of your account. Use at your own risk.
 
 ## Quick Start
 The script `run_my_scripts.py` is the main script you will want to run each time. This file will use a `ScriptQueue` that runs all your scripts in series.
